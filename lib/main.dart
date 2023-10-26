@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: FormularioModalDemo(),
     );
   }
@@ -23,18 +23,20 @@ class Usuario {
 }
 
 class FormularioModalDemo extends StatelessWidget {
+  const FormularioModalDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ventana Modal de Consulta de Datos'),
+        title: const Text('Proyecto Ventana Modal'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             _mostrarVentanaModal(context);
           },
-          child: Text('Abrir Ventana Modal'),
+          child: const Text('Abrir Ventana Modal'),
         ),
       ),
     );
@@ -45,17 +47,18 @@ class FormularioModalDemo extends StatelessWidget {
       Usuario('Juan Pérez', 'juan@egmail.com'),
       Usuario('María López', 'maria@gmail.com'),
       Usuario('Carlos García', 'carlos@gmail.com'),
+      Usuario('Jose Gomez', 'jose@gmail.com'),
     ];
 
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Consulta de Datos'),
+          title: const Text('Consulta de Datos'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text('Seleccione un usuario:'),
+              const Text('Seleccione un usuario:'),
               DropdownButton<Usuario>(
                 items: usuarios.map((Usuario usuario) {
                   return DropdownMenuItem<Usuario>(
@@ -70,7 +73,7 @@ class FormularioModalDemo extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Detalles del Usuario'),
+                          title: const Text('Detalles del Usuario'),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
@@ -80,7 +83,7 @@ class FormularioModalDemo extends StatelessWidget {
                           ),
                           actions: <Widget>[
                             TextButton(
-                              child: Text('Cerrar'),
+                              child: const Text('Cerrar'),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
@@ -96,7 +99,7 @@ class FormularioModalDemo extends StatelessWidget {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cerrar'),
+              child: const Text('Cerrar'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
