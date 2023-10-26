@@ -1,106 +1,109 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+    return MaterialApp(
+      home: FormularioModalDemo(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class Usuario {
+  final String nombre;
+  final String email;
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+  Usuario(this.nombre, this.email);
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _name = '';
-  String _lastName = '';
-  String _address = '';
-
-  void _showModal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Form(
-          key: _formKey,
-          child: Container(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                TextFormField(
-                  decoration: const InputDecoration(labelText: 'Nombre'),
-                  onSaved: (value) {
-                    _name = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(labelText: 'Apellido'),
-                  onSaved: (value) {
-                    _lastName = value!;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(labelText: 'Dirección'),
-                  onSaved: (value) {
-                    _address = value!;
-                  },
-                ),
-                const SizedBox(height: 10.0),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      Navigator.pop(context);
-                      // Aquí puedes hacer algo con los valores capturados
-                      // Por ejemplo, imprimirlos en la consola
-                      print('Nombre: $_name');
-                      print('Apellido: $_lastName');
-                      print('Dirección: $_address');
-                    }
-                  },
-                  child: const Text('Guardar'),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
+class FormularioModalDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ventana Modal'),
+        title: Text('Ventana Modal de Consulta de Datos'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            _showModal(context);
+            _mostrarVentanaModal(context);
           },
-          child: const Text('Formulario'),
+          child: Text('Abrir Ventana Modal'),
         ),
       ),
-      // Muestra los datos capturados en la parte inferior de la pantalla
-      bottomNavigationBar: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-              'Nombre: $_name\nApellido: $_lastName\nDirección: $_address'),
-        ),
-      ),
+    );
+  }
+
+  _mostrarVentanaModal(BuildContext context) {
+    final List<Usuario> usuarios = [
+      Usuario('Juan Pérez', 'juan@egmail.com'),
+      Usuario('María López', 'maria@gmail.com'),
+      Usuario('Carlos García', 'carlos@gmail.com'),
+    ];
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Consulta de Datos'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text('Seleccione un usuario:'),
+              DropdownButton<Usuario>(
+                items: usuarios.map((Usuario usuario) {
+                  return DropdownMenuItem<Usuario>(
+                    value: usuario,
+                    child: Text(usuario.nombre),
+                  );
+                }).toList(),
+                onChanged: (Usuario? selectedUser) {
+                  // Aquí puedes mostrar los detalles del usuario seleccionado
+                  if (selectedUser != null) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Detalles del Usuario'),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text('Nombre: ${selectedUser.nombre}'),
+                              Text('Correo Electrónico: ${selectedUser.email}'),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text('Cerrar'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cerrar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
