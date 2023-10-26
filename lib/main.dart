@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: FormularioModalDemo(),
     );
   }
@@ -18,8 +19,9 @@ class MyApp extends StatelessWidget {
 class Usuario {
   final String nombre;
   final String email;
+  final String direccion;
 
-  Usuario(this.nombre, this.email);
+  Usuario(this.nombre, this.email, this.direccion);
 }
 
 class FormularioModalDemo extends StatelessWidget {
@@ -36,7 +38,7 @@ class FormularioModalDemo extends StatelessWidget {
           onPressed: () {
             _mostrarVentanaModal(context);
           },
-          child: const Text('Abrir Ventana Modal'),
+          child: const Text('Abrir Ventana'),
         ),
       ),
     );
@@ -44,10 +46,10 @@ class FormularioModalDemo extends StatelessWidget {
 
   _mostrarVentanaModal(BuildContext context) {
     final List<Usuario> usuarios = [
-      Usuario('Juan Pérez', 'juan@egmail.com'),
-      Usuario('María López', 'maria@gmail.com'),
-      Usuario('Carlos García', 'carlos@gmail.com'),
-      Usuario('Jose Gomez', 'jose@gmail.com'),
+      Usuario('Juan Pérez', 'juan@egmail.com', 'Santiago'),
+      Usuario('María López', 'maria@gmail.com', 'Zacatecoluca'),
+      Usuario('Carlos García', 'carlos@gmail.com', 'San vicente'),
+      Usuario('Jose Gomez', 'jose@gmail.com', 'Ahuachapan'),
     ];
 
     showDialog(
@@ -67,7 +69,6 @@ class FormularioModalDemo extends StatelessWidget {
                   );
                 }).toList(),
                 onChanged: (Usuario? selectedUser) {
-                  // Aquí puedes mostrar los detalles del usuario seleccionado
                   if (selectedUser != null) {
                     showDialog(
                       context: context,
@@ -79,6 +80,7 @@ class FormularioModalDemo extends StatelessWidget {
                             children: <Widget>[
                               Text('Nombre: ${selectedUser.nombre}'),
                               Text('Correo Electrónico: ${selectedUser.email}'),
+                              Text('Direccion: ${selectedUser.direccion}'),
                             ],
                           ),
                           actions: <Widget>[
