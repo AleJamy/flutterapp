@@ -38,7 +38,7 @@ class FormularioModalDemo extends StatelessWidget {
           onPressed: () {
             _mostrarVentanaModal(context);
           },
-          child: const Text('Abrir Ventana'),
+          child: const Text('Abrir'),
         ),
       ),
     );
@@ -80,7 +80,7 @@ class FormularioModalDemo extends StatelessWidget {
                             children: <Widget>[
                               Text('Nombre: ${selectedUser.nombre}'),
                               Text('Correo Electrónico: ${selectedUser.email}'),
-                              Text('Direccion: ${selectedUser.direccion}'),
+                              Text('Dirección: ${selectedUser.direccion}'),
                             ],
                           ),
                           actions: <Widget>[
