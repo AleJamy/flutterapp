@@ -60,7 +60,7 @@ class FormularioModalDemo extends StatelessWidget {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text('Seleccione un usuario:'),
+              const Text('Seleccione un usuario del formuulario:'),
               DropdownButton<Usuario>(
                 items: usuarios.map((Usuario usuario) {
                   return DropdownMenuItem<Usuario>(
