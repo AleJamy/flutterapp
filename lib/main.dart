@@ -56,7 +56,7 @@ class FormularioModalDemo extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Consulta de Datos'),
+          title: const Text('Consula datos del usuario'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
