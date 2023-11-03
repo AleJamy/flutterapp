@@ -46,7 +46,7 @@ class FormularioModalDemo extends StatelessWidget {
 
   _mostrarVentanaModal(BuildContext context) {
     final List<Usuario> usuarios = [
-      Usuario('Juan Pérez', 'juan@egmail.com', 'Santiago'),
+      Usuario('Juan Pérez', 'juan@gmail.com', 'Santiago'),
       Usuario('María López', 'maria@gmail.com', 'Zacatecoluca'),
       Usuario('Carlos García', 'carlos@gmail.com', 'San vicente'),
       Usuario('Jose Gomez', 'jose@gmail.com', 'Ahuachapan'),
@@ -60,7 +60,7 @@ class FormularioModalDemo extends StatelessWidget {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text('Seleccione un usuario del formuulario:'),
+              const Text('Seleccione un usuario del formulario:'),
               DropdownButton<Usuario>(
                 items: usuarios.map((Usuario usuario) {
                   return DropdownMenuItem<Usuario>(
