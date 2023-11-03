@@ -40,7 +40,7 @@ class FormularioModalDemo extends StatelessWidget {
             _mostrarVentanaModal(context);
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.brown,
+            backgroundColor: Colors.cyan,
           ),
           child: const Text('Abrir'),
         ),
