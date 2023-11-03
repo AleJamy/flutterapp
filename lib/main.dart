@@ -31,13 +31,17 @@ class FormularioModalDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Proyecto Ventana Modal'),
+        title: const Text('Ventana Modal'),
+        backgroundColor: Colors.cyan,
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             _mostrarVentanaModal(context);
           },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.brown,
+          ),
           child: const Text('Abrir'),
         ),
       ),
@@ -57,6 +61,7 @@ class FormularioModalDemo extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Consula datos del usuario'),
+          backgroundColor: Colors.pink,
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
