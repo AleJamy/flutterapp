@@ -20,8 +20,9 @@ class Usuario {
   final String nombre;
   final String email;
   final String direccion;
+  final String edad;
 
-  Usuario(this.nombre, this.email, this.direccion);
+  Usuario(this.nombre, this.email, this.direccion, this.edad);
 }
 
 class FormularioModalDemo extends StatelessWidget {
@@ -50,10 +51,10 @@ class FormularioModalDemo extends StatelessWidget {
 
   _mostrarVentanaModal(BuildContext context) {
     final List<Usuario> usuarios = [
-      Usuario('Juan Pérez', 'juan@gmail.com', 'Santiago'),
-      Usuario('María López', 'maria@gmail.com', 'Zacatecoluca'),
-      Usuario('Carlos García', 'carlos@gmail.com', 'San vicente'),
-      Usuario('Jose Gomez', 'jose@gmail.com', 'Ahuachapan'),
+      Usuario('Juan Pérez', 'juan@gmail.com', 'Santiago', '19'),
+      Usuario('María López', 'maria@gmail.com', 'Zacatecoluca', ''),
+      Usuario('Carlos García', 'carlos@gmail.com', 'San vicente', ''),
+      Usuario('Jose Gomez', 'jose@gmail.com', 'Ahuachapan', ''),
     ];
 
     showDialog(
@@ -86,6 +87,7 @@ class FormularioModalDemo extends StatelessWidget {
                               Text('Nombre: ${selectedUser.nombre}'),
                               Text('Correo Electrónico: ${selectedUser.email}'),
                               Text('Dirección: ${selectedUser.direccion}'),
+                              Text('Edad: ${selectedUser.edad}')
                             ],
                           ),
                           actions: <Widget>[

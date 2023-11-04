@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "52410335459",
-    "project_id": "flutterexpo-21fb6",
-    "storage_bucket": "flutterexpo-21fb6.appspot.com"
+    "project_number": "1044446013962",
+    "project_id": "appmedica-95887",
+    "storage_bucket": "appmedica-95887.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:52410335459:android:56c48761e64f642a5445d6",
+        "mobilesdk_app_id": "1:1044446013962:android:a966143a9a8db8556a0df3",
         "android_client_info": {
-          "package_name": "com.flutter"
+          "package_name": "com.example.expoapp"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDCi7WR01ROcQx5nkCg2ESj5HbKaIh4f1U"
+          "current_key": "AIzaSyDed9foirqzRCcH3kEHeShxQh33aPNbypA"
         }
       ],
       "services": {
